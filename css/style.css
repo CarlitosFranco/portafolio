@@ -1,36 +1,293 @@
-/* Añade o actualiza esto en tu style.css */
+/* =========================================
+   1. VARIABLES & RESET DE ESTILOS
+   ========================================= */
+:root {
+  /* Paleta de Colores (Azul Corporativo y Grises Profesionales) */
+  --primary: #0061e0; /* Azul principal para acentos */
+  --primary-hover: #004dc2; /* Azul para hovers */
+  --background: #f4f6f9; /* Gris muy claro para el fondo */
+  --card-bg: #ffffff; /* Blanco para las tarjetas de contenido */
+  --text-main: #1a202c; /* Negro suave para texto principal */
+  --text-secondary: #4a5568; /* Gris oscuro para descripciones */
+  --text-muted: #718096; /* Gris claro para titular o fechas */
+  
+  /* Detalles Visuales */
+  --tag-bg: #ebf8ff; /* Fondo para las etiquetas de habilidades */
+  --tag-text: #2c5282; /* Texto para las etiquetas */
+  
+  /* Sombras y Bordes */
+  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius-md: 12px;
+  --radius-sm: 6px;
+  
+  /* Transiciones Suaves */
+  --transition: all 0.2s ease-in-out;
+}
+
+/* Reset básico para asegurar consistencia */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Configuración global del cuerpo */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text-main);
+  line-height: 1.6;
+  font-size: 16px;
+  padding: 40px 20px; /* Margen general para la página */
+}
+
+/* =========================================
+   2. MAQUETACIÓN (CONTENEDORES)
+   ========================================= */
+.container {
+  max-width: 900px;
+  margin: 0 auto; /* Centra el contenido en pantallas grandes */
+}
+
+/* Espaciado entre las secciones principales */
+section {
+  margin-bottom: 50px;
+}
+
+/* =========================================
+   3. TIPOGRAFÍA & TÍTULOS
+   ========================================= */
+h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 25px;
+  border-bottom: 3px solid var(--primary); /* Línea de acento debajo de cada sección */
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+/* =========================================
+   4. HEADER (ENCABEZADO PRINCIPAL)
+   ========================================= */
+header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+header .titular {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   5. TARJETAS (CARDS GENERALES)
+   ========================================= */
+.card {
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  border: 1px solid #e2e8f0; /* Borde muy suave */
+  margin-bottom: 20px;
+}
+
+/* Efecto al pasar el mouse por la tarjeta */
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-5px); /* Pequeña elevación */
+}
+
+/* =========================================
+   6. SECCIÓN ESPECÍFICA DE PROYECTOS
+   ========================================= */
+/* Grid para mostrar proyectos en 2 columnas en pantallas grandes */
 .grid-proyectos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
 }
 
+/* Asegurar que las tarjetas dentro del grid ocupen todo el espacio */
+.grid-proyectos .card {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column; /* Alinea contenido verticalmente */
+  justify-content: space-between; /* Empuja el enlace al final */
+}
+
+/* =========================================
+   7. SECCIÓN DE HABILIDADES (SKILLS)
+   ========================================= */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.skill-group {
+  margin-bottom: 15px;
+}
+
+.skill-group p {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+/* Etiquetas (Tags) estilizadas */
 .tag {
-    background: #e1f5fe;
-    color: #0288d1;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-right: 5px;
+  display: inline-block;
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px; /* Bordes totalmente redondeados */
+  margin-right: 8px;
+  margin-top: 5px;
 }
 
+/* =========================================
+   8. ENLACES & BOTONES
+   ========================================= */
+/* Enlaces generales */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Botones Estilizados (como el de GitHub) */
 .btn {
-    display: inline-block;
-    margin-top: 10px;
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
+  display: inline-block;
+  background-color: #edf2f7; /* Gris claro neutro */
+  color: #2d3748;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  margin-top: 15px;
+  text-decoration: none !important; /* Quitar subrayado */
 }
 
 .btn:hover {
-    text-decoration: underline;
+  background-color: #e2e8f0;
+  color: #1a202c;
 }
 
+/* Botón específico para descargar CV (con color de acento) */
 .btn-cv {
-    background: #28a745;
-    color: white !important;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
+  display: inline-block;
+  background-color: var(--primary);
+  color: white !important;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  text-decoration: none !important;
+  transition: var(--transition);
+}
+
+.btn-cv:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 10px rgba(0, 97, 224, 0.2);
+}
+
+/* =========================================
+   9. CONTACTO (FOOTER DE PÁGINA)
+   ========================================= */
+.contacto {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.contacto-links {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los links salten de línea en celular */
+  justify-content: center;
+  gap: 30px; /* Espacio entre los enlaces de contacto */
+  margin-top: 25px;
+  align-items: center;
+}
+
+/* Ajuste para los iconos de contacto */
+.contacto-links p {
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+
+/* =========================================
+   10. RESPONSIVO (DISEÑO PARA CELULARES)
+   ========================================= */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 10px; /* Menos margen lateral en celular */
+  }
+  
+  h1 {
+    font-size: 2.1rem; /* Título más pequeño */
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+  
+  header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+  }
+  
+  .card {
+    padding: 20px; /* Menos padding interno en la tarjeta */
+  }
+  
+  /* Ajuste de los links de contacto para que no se peguen */
+  .contacto-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Asegurar que las columnas del grid se mantengan en 1 en pantallas muy pequeñas */
+  .grid-proyectos {
+    grid-template-columns: 1fr;
+  }
 }
